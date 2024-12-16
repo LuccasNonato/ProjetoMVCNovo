@@ -69,8 +69,6 @@ destructor TControllerPessoas.destroy;
 begin
   model.Free;
   inherited;
-
-  //PODERIA SER UM FREE AND NIL?
 end;
 
 procedure TControllerPessoas.Insert(Entidade: TEntidadePessoas);
