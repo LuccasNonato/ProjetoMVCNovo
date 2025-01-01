@@ -82,17 +82,11 @@ implementation
 procedure TForm1.btn1Click(Sender: TObject);
 var
   LController:   TControllerPessoas;
-  ValidaCampos:  TFunctions;
 begin
   LController := TControllerPessoas.create;
-  ValidaCampos := TFunctions.Create;
 
-  if not ValidaCampos.VerificarCamposEmBranco(self) then
-  begin
-   Application.MessageBox('Preencher todos os campos!', '', MB_OK);
-   exit;
-  end;
 
+  if not TFunctions.VerificarCamposEmBranco(self) then  exit;
 
   try
 
@@ -276,7 +270,7 @@ begin
   try
 
    if not ValidaCPF.ValidarCPF(edtCpf.Text) then
-    if Application.MessageBox('CPF Inválido deseja Continuar?','', MB_YESNO) = IDNO then
+    if Application.MessageBox('CPF InvÃ¡lido deseja Continuar?','', MB_YESNO) = IDNO then
      edtcpf.SetFocus;
   finally
     FreeAndNil(ValidaCPF);
@@ -291,7 +285,7 @@ begin
 
   try
     if not ValidaEmail.ValidarEmail(edtemail.Text) then
-     if Application.MessageBox('Email Inválido deseja Continuar?','', MB_YESNO) = IDNO then
+     if Application.MessageBox('Email InvÃ¡lido deseja Continuar?','', MB_YESNO) = IDNO then
       edtEmail.SetFocus;
   finally
     FreeAndNil(ValidaEmail);
@@ -306,7 +300,7 @@ begin
 
   try
     if not ValidaRG.ValidarRG(edtRg.Text) then
-     if Application.MessageBox('RG Inválido deseja Continuar?','', MB_YESNO) = IDNO then
+     if Application.MessageBox('RG InvÃ¡lido deseja Continuar?','', MB_YESNO) = IDNO then
       edtRG.SetFocus;
   finally
     FreeAndNil(ValidaRG);
@@ -321,7 +315,7 @@ begin
 
   try
     if not ValidaTelefone.ValidarTelefone(edtTelefone.Text) then
-     if Application.MessageBox('Telefone Inválido deseja Continuar?','', MB_YESNO) = IDNO then
+     if Application.MessageBox('Telefone InvÃ¡lido deseja Continuar?','', MB_YESNO) = IDNO then
       edtTelefone.SetFocus;
   finally
     FreeAndNil(ValidaTelefone);
