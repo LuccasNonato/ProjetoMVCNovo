@@ -27,7 +27,7 @@ uses
        function  ValidarEmail(const Email: string): Boolean;
        function  ValidarRG(const RG: string): Boolean;
        function  ValidarTelefone(const Telefone: string): Boolean;
-       function  VerificarCamposEmBranco(Form: TForm): Boolean;
+       class function  VerificarCamposEmBranco(Form: TForm): Boolean;
      end;
 
 implementation
@@ -45,7 +45,7 @@ var
 begin
   if Length(CEP) < 8 then
   begin
-    ShowMessage('Erro ao consultar CEP, verifique se o CEP digitado está correto');
+    ShowMessage('Erro ao consultar CEP, verifique se o CEP digitado estÃ¡ correto');
     Result := False;
     exit;
   end;
@@ -54,7 +54,7 @@ begin
   RESTClient := TRESTClient.Create('https://viacep.com.br/ws/');
   RESTRequest := TRESTRequest.Create(nil);
   RESTResponse := TRESTResponse.Create(nil);
-  FMenssagem := 'CEP não encontrado ou inválido.';
+  FMenssagem := 'CEP nÃ£o encontrado ou invÃ¡lido.';
   Erro := JSONValue.GetValue<Boolean>('erro', False);
 
   try
@@ -103,7 +103,7 @@ begin
     end
     else
     begin
-      ShowMessage('Erro ao consultar CEP, verifique se as informações estão corretas ' + #13 +
+      ShowMessage('Erro ao consultar CEP, verifique se as informaÃ§Ãµes estÃ£o corretas ' + #13 +
       'LOG: ' + RESTResponse.StatusText);
     end;
 
@@ -218,7 +218,7 @@ begin
   Result := Regex.IsMatch(Telefone);
 end;
 
-function TFunctions.VerificarCamposEmBranco(Form: TForm): Boolean;
+class function TFunctions.VerificarCamposEmBranco(Form: TForm): Boolean;
 var
   i: Integer;
   Ctrl: TComponent;
@@ -235,6 +235,7 @@ begin
       begin
         TEdit(Ctrl).SetFocus;
         Result := False;
+        ShowMessage('Preencher todos os campos!');
         Exit;
       end;
     end;
